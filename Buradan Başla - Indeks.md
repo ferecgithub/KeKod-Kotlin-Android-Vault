@@ -1,0 +1,5 @@
+### 1. [[Temel Tipler - Notlar]]
+### 2. [[Control Flows - Notlar]]
+### 3. [[Döngüler - Notlar]]
+### 4. [[Fonksiyonlar - Notlar]]
+### 5. [[Sınıflar - Notlar]]
