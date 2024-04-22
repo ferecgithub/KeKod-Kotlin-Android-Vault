@@ -20,60 +20,12 @@
             }
           },
           {
-            "id": "a5dc0949ea5486e5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Buradan Başla - Indeks.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "a23d49fd52bc80f6",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Fonksiyonlar - Notlar.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "02733c4e90e1ad56",
+            "id": "88ef3be89c687a04",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "Kotlin Mülakat Soruları.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "4329bb01eaf63ff7",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Fonksiyonlar - Notlar.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "c3e3ace683bb59c1",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Sınıflar - Notlar.md",
                 "mode": "source",
                 "source": false
               }
@@ -209,6 +161,7 @@
   "active": "fde82d7303f46680",
   "lastOpenFiles": [
     "Kotlin Mülakat Soruları.md",
+    "Kotlin Interview Questions.md",
     "Sınıflar - Notlar.md",
     "Fonksiyonlar - Notlar.md",
     "Screenshot 2024-04-19 at 15.16.28.png",
@@ -217,7 +170,6 @@
     "Untitled.md",
     "Control Flows - Notlar.md",
     "Temel Tipler - Notlar.md",
-    "Kotlin Interview Questions.md",
     "Welcome.md"
   ]
 }

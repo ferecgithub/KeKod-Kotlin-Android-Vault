@@ -365,13 +365,29 @@ inline fun runAndPrint(run: (String) -> Unit, noinline logger: (String) -> Unit)
 ### [[Sınıflar - Notlar]]
 
 ---------------------
- 43. **Arayüzler (interface) ve soyut sınıflar (abstract class) arasında ne fark vardır?**
+ 43. **Kotlin'de bir değişkenin arka planda property olarak değil de, Java'daki değişken olarak çevrildiği durumu anlatın.**
+	    Kotlin'de bir fonksiyonun içinde lokal bir değişken tanımlarsak, bu değişken arka planda Java'daki değişken gibi yazılır.
+ 44. **Arayüzler (interface) ve soyut sınıflar (abstract class) arasında ne fark vardır?**
     * İnterface'ler state tutmazlar yani değişkenler backing field tutmazlar. Ancak abstract classlar state tutabilirler.
     * Kotlin'de çoklu miras desteklenmiyor. Bu yüzden tek bir sınıftan miras alınabilir. Ancak interfaceler daha fazla esneklik verir çünkü birden fazla interface'ten miras alınabilir.
     * abstract fonksiyonları implement etmek zorundayız çünkü bodysi yoktur ancak interface'te fonksiyonları opsiyonel yapabiliriz. Bunu body yazarak (süslü parantez) yapabiliriz. Interface'te fonksiyonlara body açınca, o fonksiyon statik bir sınıfın bir fonksiyonu gibi çevrilir.
     * Interface'te state tutabiliriz ancak bu önerilmeyen bir yöntem. Companion object içinde tutulabilir. Ancak interface içinde state tutulmamalıdır.
     * Abstract class içindeki fonksiyonlara `final` anahtar kelimesi yazarak yeniden implementasyonunu engelleyebiliriz. Ancak interfaceler yapıları gereği `final` kelimesi kullanılamaz. Bu yüzden yeniden implementasyonu engelleme yapamayız.
-44. **Soyut sınıflar (abstract class) ve açık sınıflar (open class) arasında ne fark vardır?**
+45. **Soyut sınıflar (abstract class) ve açık sınıflar (open class) arasında ne fark vardır?**
     * Eğer soyut (abstract) bir bilgi gerekecekse yani miras alacak sınıflarda detaylar farklılaşacaksa bu yapıyı abstract class yapsak daha iyi bir pratiktir. Ancak gerekmeyecekse open class yaparız.
     * Aynı UI'a sahip iki ekran varsa ve detayları da aynı ise, bu yapıların ayrıntılarını içeren bir open class oluşturabiliriz. Bu open class da tüm fragmentlerin ortak özelliklerini miras alabileceği bir abstract sınıftan miras alabilir. 
     * Bir sınıfın kesin olarak alması gereken özellikleri zorunlu olarak (developer hatasına yer bırakmayacak şekilde) implement edilmesini sağlamak için abstract class'tan miras alırız. Eğer varsayılan değerleri kullanarak bir implementasyon yapacaksak open class kullanabiliriz.
+46. **Data classlar ile normal classlar arasında ne fark vardır?**
+    * İçlerinde salt veri tutmak için kullanılırlar. Mutlaka primary constructor'a sahip olmalı ve bu constructor içinde mutlaka en az bir val/var ile yazılmış parametre olması gerekli. val/var şekilde yazılmalarının sebebi, içerideki üye fonksiyonlar tarafından kullanılabilmeleri içindir.
+    * Parametreler default değer alabilirler. Bu özellikle data classları JSON'a maplerken işe yarar. Gson, Moshi gibi kütüphaneler varsayılan olarak boş constructorlara ihtiyacı var. Eğer biz varsayılan değerler verirsek primary constructor'daki üyelere, nesne üretilirken boş constructor alabilir.
+    * Body'li veya body'siz kullanılabilir.
+    * Varsayılan olarak `final`'dır. `open`yapılamaz. Ancak başka bir `abstract`sınıf veya `open`sınıfı implement edebilir. 
+    * Primary constructor içindeki üyeler için component fonksiyonları üretilir ancak sınıf içinde bir üye değişken yazılırsa onun için arka planda component fonksiyonu üretilmez. 
+    * component fonksiyonları, primary constructor içindeki her üye için component1, component2.. şekilde oluştururuz. Bu yüzden componentN fonksiyonları da denir. Bu yapı bize, data class'ın primary constructor'ının içindeki üyeleri Pair ve Triple gibi içlerinde componentN şeklinde veri tutan yapılara ayırarak dönüştürmemizi sağlar. Buna **destructing declarations** denir.
+    * Sınıfın içine yazılan üye değişkenler, copy, hashCode, equals ve toString fonksiyonları üretilirler kullanılmazlar.
+47. **Kotlin'de visibility modifierları anlatın?**
+    * Kotlin'de 4 tip visibility modifier vardır. Bunlar: `private`, `public`, `protected` ve `internal`'dır.
+    * `public` kelimesi ile sınıf, fonksiyon veya özellik dışardan ulaşıma açılır.
+    * `private` önüne geldiği değişken veya fonksiyona sadece aynı sınıf içinden ulaşılmasına izin verir. Bunu o değişkenin arka planda get ve set fonksiyonlarını silerek gerçekleştirir.
+    * `protected`Java'da aynı modül dışına kapatırken, Kotlin'de tanımlandığı sınıf ve child sınıfların o fonksiyona veya özelliğe erişebilmesini sağlar. Kotlin'de `protected`sınıf için kullanılamaz.
+    * `internal` kelimesi ile bir sınıfı içinde bulunduğu modülün dışında ulaşılmasını engelleriz. Dışarıda `private`, modül içinde `public`gibi davranır.

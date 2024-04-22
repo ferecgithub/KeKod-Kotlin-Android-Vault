@@ -1,3 +1,13 @@
+* Java ve Kotlin'de sınıflarda değişen ilk şey, sınıfın nesnesini oluştururken artık `new`anahtar kelimesini kullanmıyoruz.
+* Java ve Kotlin'de sınıflarda değişen ikinci şey, constructor yapısıdır. Java'da parametrelere varsayılan değer veremediğimiz için constructorları overload etmemiz gerekir. Kotlin'de bu overload işlemi arka planda yapılır ve bize varsayılan değer girmemize izin verir. Bu sayede daha temiz bir kod elde ederiz. 
+* Kotlin'de primary constructor ve secondary constructor kavramları vardır. Primary constructor sınıf adının hemen yanına parametre parantezleri açarak yazılır. Secondary contructor(lar) `constructor`anahtar kelimesi ile bir blok açılarak yazılır.
+* Kotlin'de sınıflardaki `init`bloğu aslında constructor'ın body'sidir. Sınıf başlatıldığında ilk olarak çalıştırılacak bloktur.
+* Her zaman önce primary constructor body'si çalıştırılır sonra secondary constructor body'si çalıştırılır. Java'da bir constructor diğer bir constructor'ı işaret etmediği için sadece o constructor'ın body'si çalışır.
+* Secondary constructor, primary constructor'ın varsayılan değer içermeyen tüm değerlerini içermek zorundadır.
+* Primary constructor'da parametredeki değişkenlere `val`veya `var`anahtar kelimelerini verirsek, artık bunlar sınıfın üye değişkenleri gibi davranırlar. Sınıf içindeki üye fonksiyonlardan da ulaşılabilirler.
+* Kotlin'de kullanabileceğimiz 4 farklı visibility modifier var. Bunlar `public`, `private`, `protected`, `internal`'dır.
+* Kotlin'de değişkenler arka planda aslında fonksiyon gibi davranırlar. Hafızadaki değeri yani backing field, her zaman `private`'tır. Onlara eriştiğimiz getter ve setter fonksiyonları `public`olabilir.
+* Kotlin'de encapsulation yapmıyormuş gibi gözükse de aslında Java'nın aksine encapsulation'ı değiştirmemize izin bile verilmez.
 * Kotlin'de Java'nın aksine miras alınabilmesi veya alınamamasını belirlemek için özel anahtar kelimeler vardır. `open` ile sınıf miras alınabilir ve `final` ile sınıfı miras alınamaz hâle getirebiliriz. Varsayılan olarak Kotlin'de sınıflar `final`'dır.
   
 * Sınıflarda'ki propertylere de `open` verilebilir. Bu o property'nin override edilebilir hâle getirir.
@@ -36,4 +46,40 @@
 
 -----------
 ### Data classlar
-* Mutlaka primary constructor'ı olan ve bu constructor'da en az bir property (val/var ile yazılmış) parametre içermesi gereken sınıflardır.
+* Mutlaka primary constructor'ı olan ve bu constructor'da en az bir property (val/var ile yazılmış) parametre içermesi gereken sınıflardır.  val/var şekilde yazılmalarının sebebi, içerideki üye fonksiyonlar tarafından kullanılabilmeleri içindir. İçlerinde salt veri tutmak için kullanılırlar.
+* İkinci constructor içerebilirler.
+* Member property tanımlanabilir.
+* Visibility modifier'lar kullanılabilir.
+* `open`kullanılamaz. Varsayılan olarak `final`'dır.
+* `abstract`veya `open`sınıflardan miras alabilir. Interface'leri implement edebilir.
+* `inner`yapılamaz ancak nested yapıda bulunabilir.
+* `sealed`yapılamaz.
+* Parametreler default değer alabilirler. Bu özellikle data classları JSON'a maplerken işe yarar. Gson, Moshi gibi kütüphaneler varsayılan olarak boş constructorlara ihtiyacı var. Eğer biz varsayılan değerler verirsek primary constructor'daki üyelere, nesne üretilirken boş constructor alabilir.
+* Primary constructor içindeki üyeler için component fonksiyonları üretilir ancak sınıf içinde bir üye değişken yazılırsa onun için arka planda component fonksiyonu üretilmez. 
+* component fonksiyonları, primary constructor içindeki her üye için component1, component2.. şekilde oluştururuz. Bu yüzden componentN fonksiyonları da denir. Bu yapı bize, data class'ın primary constructor'ının içindeki üyeleri Pair ve Triple gibi içlerinde componentN şeklinde veri tutan yapılara ayırarak dönüştürmemizi sağlar. Buna **destructing declarations** denir. Örneğin:
+  
+```kotlin
+data class PokemonData(val name: String = "", val type: String = "", val isEvolved: Boolean = false, val age: Int = -1)
+
+fun main() {
+	val pokemonData = PokemonData("Pikachu", "Electric", false, 4)
+
+	val pair: Pair<String, String> = Pair(pokemonData.name, pokemonData.type)
+	val triple: Triple<String, String, Int> = Triple(pokemonData.name, pokemonData.type, pokemonData.age)
+	
+	val name = pair.first
+	val type = pair.second
+	
+	// Bu yapıyı destructing declarations ile yazacak olursak:
+	val(name2, type2) = pair
+	val(name3, type3) = Pair(pokemonData.name, pokemonData.type)
+
+	// Eğer direkt data class'ın componentN fonksiyonlarını destructing declarations ile ayırmak istersek (burada constructor'daki sıralama önemli):
+	val(pokeName, pokeType, isPokeEvolved, pokeAge) = pokemonData
+}
+```
+  
+* Sınıfın içine yazılan üye değişkenler, copy, hashCode, equals ve toString fonksiyonları üretilirler kullanılmazlar.  hashCode, equals ve toString fonksiyonları Any sınıfından gelir ancak copy fonksiyonu data class içinde üretilir.
+* copy fonksiyonu arka planda tüm primary constructor parametrelerini içeren bir şekilde oluşturulur.
+* İdeal olarak data classlar salt veri içermeli ve mantık içermemelidir. UI için veri manipülasyonları mapperlar ile yapılıp, UI için özel oluşturulmuş data classlara çevrilmelidir.
+* toString methodu dolu olduğu ve loglanabildiği için, gizliliği ihlal edilebilecek bilgileri data class yerine normal classlarda yazabiliriz. Bu durumda hackerların işini zorlaştırmış oluruz.
