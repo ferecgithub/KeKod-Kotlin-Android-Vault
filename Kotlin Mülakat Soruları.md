@@ -366,7 +366,7 @@ inline fun runAndPrint(run: (String) -> Unit, noinline logger: (String) -> Unit)
 
 ---------------------
  43. **Kotlin'de bir değişkenin arka planda property olarak değil de, Java'daki değişken olarak çevrildiği durumu anlatın.**
-	    Kotlin'de bir fonksiyonun içinde lokal bir değişken tanımlarsak, bu değişken arka planda Java'daki değişken gibi yazılır.
+	    Kotlin'de bir fonksiyonun içinde lokal bir değişken tanımlarsak, bu değişken arka planda Java'daki değişken gibi yazılır. Yani artık bu değişken property değil backing field'dır.
  44. **Arayüzler (interface) ve soyut sınıflar (abstract class) arasında ne fark vardır?**
     * İnterface'ler state tutmazlar yani değişkenler backing field tutmazlar. Ancak abstract classlar state tutabilirler.
     * Kotlin'de çoklu miras desteklenmiyor. Bu yüzden tek bir sınıftan miras alınabilir. Ancak interfaceler daha fazla esneklik verir çünkü birden fazla interface'ten miras alınabilir.
@@ -391,3 +391,39 @@ inline fun runAndPrint(run: (String) -> Unit, noinline logger: (String) -> Unit)
     * `private` önüne geldiği değişken veya fonksiyona sadece aynı sınıf içinden ulaşılmasına izin verir. Bunu o değişkenin arka planda get ve set fonksiyonlarını silerek gerçekleştirir.
     * `protected`Java'da aynı modül dışına kapatırken, Kotlin'de tanımlandığı sınıf ve child sınıfların o fonksiyona veya özelliğe erişebilmesini sağlar. Kotlin'de `protected`sınıf için kullanılamaz.
     * `internal` kelimesi ile bir sınıfı içinde bulunduğu modülün dışında ulaşılmasını engelleriz. Dışarıda `private`, modül içinde `public`gibi davranır.
+48. **Kotlin'de accessibility modifierları anlatın?**
+	Kotlin'de `open`ve `final`olmak üzere 2 çeşit accessibility modifier vardır. `open` anahtar kelimesi ile sınıf, fonksiyon veya özellik child sınıflar tarafından miras alınabilmesi sağlanırken, `final` ile child sınıflar tarafından miras alınabilmesi engellenir.
+49. **Sınıfları neden override edemiyoruz?**
+		Override ederken yaptığımız şey varlığın özelliğini değiştirmek/yeni bir davranış kazandırmak. Biz sınıf oluştururken ortak özellikleri taşıyan en küçük yapıyı oluşturmaya çalışıyoruz. Bu yüzden sınıf override etmek mantıklı olmazdı.
+50. **Bir sınıf aynı fonksiyon ismine, aynı fonksiyon parametlerine ve aynı geri dönüş tipine sahip bir fonksiyonu içeren bir interface'i ve bir üst sınıfı implement eder ve miras alırsa, child class'ta üst sınıfın ve interface'in bahsi geçen fonksiyonuna nasıl ulaşabiliriz?**
+		Burada `super`anahtar kelimesinin yanına bir arayüz kullanırız (`<>` yapısına arayüz diyoruz bu örnek kapsamında.) Örneğin:
+```kotlin
+class Square(): Rectangle(), Polygon {
+
+	override fun draw() {
+		super<Rectangle>.draw() // Rectangle'ın draw fonksiyonuna ulaşır
+		super<Polygon>.draw() // Polygon'un draw fonksiyonuna ulaşır
+	}
+}
+```
+
+51. **Aşağıdaki kod parçacığının sonucu ne olur?**
+```kotlin
+class A(){
+	var counter = 54
+		set(value) {
+			counter = value
+		}
+}
+```
+
+Bu kod parçacığı **StackOverflow hatası** verecektir. Her seferinde özyineli şekilde set fonksiyonu çağrılacaktır. Bunu düzeltmek için `field` değerine atama yapılmalıdır.
+```kotlin
+class A(){
+	var counter = 54
+		set(value) {
+			field = value
+		}
+}
+```
+

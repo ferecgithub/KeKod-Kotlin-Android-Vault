@@ -31,7 +31,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -97,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Sınıflar - Notlar.md",
+                "file": "Kotlin Mülakat Soruları.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Sınıflar - Notlar.md",
+                "file": "Kotlin Mülakat Soruları.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Sınıflar - Notlar.md"
+                "file": "Kotlin Mülakat Soruları.md"
               }
             }
           }
@@ -158,18 +159,18 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "fde82d7303f46680",
+  "active": "88ef3be89c687a04",
   "lastOpenFiles": [
-    "Kotlin Mülakat Soruları.md",
-    "Kotlin Interview Questions.md",
     "Sınıflar - Notlar.md",
+    "Kotlin Mülakat Soruları.md",
+    "Temel Tipler - Notlar.md",
+    "Kotlin Interview Questions.md",
     "Fonksiyonlar - Notlar.md",
     "Screenshot 2024-04-19 at 15.16.28.png",
     "Buradan Başla - Indeks.md",
     "Döngüler - Notlar.md",
     "Untitled.md",
     "Control Flows - Notlar.md",
-    "Temel Tipler - Notlar.md",
     "Welcome.md"
   ]
 }
