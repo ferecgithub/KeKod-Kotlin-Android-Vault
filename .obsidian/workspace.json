@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Kotlin Mülakat Soruları.md",
+                "file": "ReadMe.md",
                 "mode": "source",
                 "source": false
               }
@@ -98,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Kotlin Mülakat Soruları.md",
+                "file": "ReadMe.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Kotlin Mülakat Soruları.md",
+                "file": "ReadMe.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Kotlin Mülakat Soruları.md"
+                "file": "ReadMe.md"
               }
             }
           }
@@ -159,17 +159,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "88ef3be89c687a04",
+  "active": "21ec2b74cb4478ec",
   "lastOpenFiles": [
-    "Sınıflar - Notlar.md",
     "Kotlin Mülakat Soruları.md",
+    "Sınıflar - Notlar.md",
     "Temel Tipler - Notlar.md",
     "Kotlin Interview Questions.md",
     "Fonksiyonlar - Notlar.md",
     "Screenshot 2024-04-19 at 15.16.28.png",
     "Buradan Başla - Indeks.md",
     "Döngüler - Notlar.md",
-    "Untitled.md",
+    "ReadMe.md",
     "Control Flows - Notlar.md",
     "Welcome.md"
   ]
