@@ -1,5 +1,5 @@
 # KeKod Kotlin & Android Notları
-Gökhan Öztürk'ün anlatımıyla KeKod grubu Kotlin ve Android Bootcamp notlarımı paylaştığım depodur. [Obsidian](https://obsidian.md/) ile yazılmıştır.
+Gökhan Öztürk'ün anlatımıyla  [KeKod grubu](https://www.youtube.com/@KeKod/streams) Kotlin ve Android Bootcamp notlarımı paylaştığım depodur. [Obsidian](https://obsidian.md/) ile yazılmıştır.
 
 ### Kullanım adımları
 1. [Obsidian](https://obsidian.md/) indirin.
