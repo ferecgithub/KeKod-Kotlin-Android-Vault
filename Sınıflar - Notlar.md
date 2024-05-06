@@ -153,3 +153,53 @@ fun main() {
 * copy fonksiyonu arka planda tüm primary constructor parametrelerini içeren bir şekilde oluşturulur.
 * İdeal olarak data classlar salt veri içermeli ve mantık içermemelidir. UI için veri manipülasyonları mapperlar ile yapılıp, UI için özel oluşturulmuş data classlara çevrilmelidir.
 * toString methodu dolu olduğu ve loglanabildiği için, gizliliği ihlal edilebilecek bilgileri data class yerine normal classlarda yazabiliriz. Bu durumda hackerların işini zorlaştırmış oluruz.
+
+-----------
+### Enum classlar
+* Gruplayabildiğimiz, aynı tipe sahip öğelerin bulunduğu sınıflardır. Bu kısıtlama sayesinde yazılım geliştiricisinin yapabileceği hata azaltılmış olur.
+* Visibility modifier'ları alabilirler.
+* Başka sınıflardan miras alamaz ancak interface implement edilebilir. Çünkü enum sınıflar değerler (value) ile ilgilidir, sınıflar ile ilgili değildir.
+* Primary constructor `private`olduğu için nesnesi oluşturulamaz.
+* Eğer bir `enum class`'ın içine `abstract` bir fonksiyon yazarsak veya bir interface implement edersek, bu durumda enum sabitleri de bu fonksiyonları override etmeli veya `enum class` bodysi içinde tanımlamak zorundayız.
+* Eğer primary constructor'da val veya var ile property yazarsak, bu property'e dışarıdan erişilebilir. `val` ise arka planda get fonksiyonu oluşturulur, `var` ise get/set fonksiyonları oluşturulur.
+* Enum class'a tanımlı bazı fonksiyonlar:
+```kotlin
+enum class Team(val starCount: Int) {
+	FENERBAHCE(5),
+	GALATASARAY(4)
+	BESIKTAS(3)
+}
+
+fun main() {
+	val besiktasStars = Team.BESIKTAS.starCount
+	val galatasarayStars = Team.valueOf("GALATASARAY").starCount
+	val teams1: Array<Team> = Team.values() // önerilen entries kullanımıdır
+	val teams2: Array<Team> = Team.entries
+
+	val besiktasName = Team.BESIKTAS.name
+	val besiktasOrdinal = Team.BESIKTAS.ordinal // array'deki indeksini verir.
+}
+```
+
+* Any sınıfından gelen equals, hashCode ve toString fonksiyonlarını override edebiliriz.
+* Enum sabitlerinin `name` ve `ordinal` olmak üzere 2 ayrı property'e sahiptirler. `name` özelliği toString'den bağımsızdır. O enum sabitinin birebir ismini döner. Eğer bir format kaygımız varsa toString'i override etmek daha faydalı olabilir.
+* Enum sabitleri arka planda statik sınıf olarak oluşturulurlar ve üzerindeki enum sınıfını miras alırlar.
+* Enum sınıflarının içindeki düz fonksiyonlara, statik olmadıkları için dışarıdan erişilemez.
+
+-----------
+### Sealed classlar
+* Sınıf hiyerarşisini geliştiricinin keyfinden alıp, IDE'nin eline verdiğimiz kısıtlanmış hiyerarşi oluşturabileceğimiz sınıflardır.  Child classlar derleme aşamasında belli olur. Başka bir geliştiricinin bizim yaptığımız `sealed class`'ı miras alarak yeni türler oluşturmasını önledik.
+* Boş bir sealed class oluşturursak, herhangi bir sınıfa miras olarak verebiliriz. Bu durumda kapalı kutu durumu ortadan kalkar.
+* Visibility modifier'lar kullanılabilir.
+* `open` veya `final` yapılamazlar.
+* Sealed classlar diğer sınıfları miras alabilir.
+* Primary constructoru varsayılan `protected`'dır. Sadece sınıf scope'u içinde bir hiyerarşi kurulursa constructor `private` yapılabilir ancak `protected`olması, dışarıda da bu sealed class'ı miras alan bir sınıf olabilmesini sağlar. Kütüphanelerde constructor `private`yapılır ki kütüphanedeki sealed class içinde belirlenen türlerden başka türler türetilemesin.
+* Enum class'lardaki enum sabitlerinin arka planda bulunduğu gibi, sealed class'ın child classları da **static final class** olarak bulunurlar.
+* Enum class'ların sabitleri hafızada sadece bir tane bulunur (nesnesi oluşturulamaz). Ancak sealed class'ların childları birden fazla nesnesi oluşturabilir.
+* Sealed class içinde `object` kullanımı ve enum classlar'daki enum sabitleri arka planda aynı şekilde oluşturulur. İkisi de static class olarak oluşturulur.
+* Sealed class'lar bize modül seviyesinde bir kısıtlama getirir. Örneğin BaseFragment tiplerini gruplayacağımız bir sealed class'ı core modülüne koyup, o şekilde paylaştırabiliriz.
+* Sealed classlar'ın direct subclass'ların (bodysinde bulunan child classlar) primary constructor'ındaki parametre, sealed class'ın primary constructor'ındaki parametre ile aynı olmak zorunda değildir (enum classlar'ın aksine).
+* Ortak olarak gruplayabildiğimiz yapılarda, tüm sabitler sadece ortak özelliklere sahip olsun dersek enum class ancak her sabit kendi içlerinde farklı özelliklere de sahip olabilsin (örneğin interface implemente ederek) dersek sealed class kullanabiliriz.
+* Direct class'lar (sealed class'ın bodysi içindeki direkt child classları), `open`, `abstract`, `data` anahtar kelimelerini alabilirler. 
+* Sealed classlar'ın direct child'ları derlenme zamanında (compile-time) belirlenir. Bu yüzden `when` ile kullanımında normal inheritance'dan farklanır.
+* **Sealed Interface**'ler de aynı mantığın interfaceler için uygulanmış hâlidir. Interface'leri gruplamak için kullanılır.

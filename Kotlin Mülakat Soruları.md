@@ -427,3 +427,11 @@ class A(){
 }
 ```
 
+52. **Sealed class'lar ile enum class'ları karşılaştırınız.**
+* Sealed class'lar ve enum class'lar ortak özellikleri üzerine gruplayabileceğimiz yapılar için kullanılırlar. İkisini de `when` yapısı içinde kullandığımızda exhaustive olduğu için tüm ihtimalleri ele almamızı ister ve geliştiricinin hatasını önler. Bu yapılar hiyerarşik yapıyı geliştiricinin elinden alıp IDE'nin kontrolüne vererek daha sıkı bir kontrol sağlar.
+* Sealed class'lar bir sınıf hiyerarşisi kurarken, enum class'lar bir değer (value) hiyerarşisi kurar. Eğer sınıf özelliklerini kullanacaksak, nesne üretmemiz gerekirse sealed class kullanmamız gerekir. Eğer tek bir instance olsun ve daha basit bir yapı gerekli ise enum class kullanabiliriz.
+* Enum class'lardaki enum sabitlerinin arka planda bulunduğu gibi, sealed class'ın child classları da **static final class** olarak bulunurlar. Ancak miras aldıkları sınıf türü farklıdır. Enum class sabitlerinin miras aldığı `enum` iken, sealed class'ın direct subclass'larının miras aldığı bir sınıf yapısıdır.
+* Enum class'ların sabitleri hafızada sadece bir tane bulunur (nesnesi oluşturulamaz). Ancak sealed class'ların childları birden fazla nesnesi oluşturabilir.
+* Sealed class içinde `object` kullanımı ve enum classlar'daki enum sabitleri arka planda aynı şekilde oluşturulur. İkisi de static class olarak oluşturulur.
+* Sealed classlar'ın direct subclass'ların (bodysinde bulunan child classlar) primary constructor'ındaki parametre, sealed class'ın primary constructor'ındaki parametre ile aynı olmak zorunda değildir (enum classlar'ın aksine).
+* Enum class'lar miras alınamazlar dolayısı ile `open` veya `abstract` olamazlar. Ancak sealed class'larda bu kısıtlama yoktur.
