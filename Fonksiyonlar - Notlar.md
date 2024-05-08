@@ -85,5 +85,5 @@ fun main() {
 * Eğer `inline` fonksiyonun parametresindeki fonksiyon başka bir higher-order fonksiyona parametre olarak verilecekse, `non-local return` konusundan dolayı izin verilmez. Bu durumda parametredeki fonksiyon için `crossinline`kullanırız. Bu şekilde artık parametredeki fonksiyon `non-local return` ihtimaline karşı hata almayız **ve `return` keywordüne izin verilmez.** Diğer bir deyişle `crossinline`zaten `non-local return`kullanmadığımızı taahhüt eden bir keyworddür. IDE'de emin oluyor bu şekilde. Ayrıca `crossinline`keywordü `inline`özelliğini korur yani parametredeki fonksiyonun nesnesi oluşturulmaz. 
 * `inline`ile fonksiyon return edebilir hâle gelir. Ancak body içinde `inline`olmayan başka bir fonksiyon içinde return çağırılabileceği için IDE hata verir ve `crossinline`yazmamız istenir.
 
-![[Screenshot 2024-04-19 at 15.16.28.png]]
+![[inline_modifiers.png]]
 Resim kaynağı: https://www.youtube.com/watch?v=T9sAlxqYFYc

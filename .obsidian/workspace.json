@@ -37,7 +37,19 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Nested & inner classlar.md",
+                "file": "Kotlin'de obje yönelimli programlama (object oriented programming).md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "f8bbb92a52053efc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Fonksiyonlar - Notlar.md",
                 "mode": "source",
                 "source": false
               }
@@ -151,8 +163,7 @@
               }
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -218,7 +229,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Nested & inner classlar.md",
+                "file": "Sınıflar - Notlar.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -235,7 +246,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Nested & inner classlar.md",
+                "file": "Sınıflar - Notlar.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -258,7 +269,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Nested & inner classlar.md"
+                "file": "Sınıflar - Notlar.md"
               }
             }
           }
@@ -279,26 +290,27 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "cc03cb36308f6f8a",
+  "active": "88ef3be89c687a04",
   "lastOpenFiles": [
-    "Buradan Başla - Indeks.md",
-    "Nested & inner classlar.md",
-    "Generics.md",
-    "Kotlin Mülakat Soruları.md",
+    "Fonksiyonlar - Notlar.md",
     "Kotlin'de obje yönelimli programlama (object oriented programming).md",
-    "Soyut Sınıflar (Abstract Classes).md",
-    "Sınıflar - Notlar.md",
-    "Interfaceler.md",
+    "Nested & inner classlar.md",
+    "Screenshot 2024-04-19 at 15.16.28.png",
+    "inline_modifiers.png",
     "Data classlar.md",
     "Enum classlar.md",
     "Sealed classlar.md",
+    "Sınıflar - Notlar.md",
+    "Generics.md",
+    "Buradan Başla - Indeks.md",
+    "Kotlin Mülakat Soruları.md",
+    "Soyut Sınıflar (Abstract Classes).md",
+    "Interfaceler.md",
     "Control Flows - Notlar.md",
     "Döngüler - Notlar.md",
     "ReadMe.md",
     "Temel Tipler - Notlar.md",
     "Kotlin Interview Questions.md",
-    "Fonksiyonlar - Notlar.md",
-    "Screenshot 2024-04-19 at 15.16.28.png",
     "Welcome.md"
   ]
 }
