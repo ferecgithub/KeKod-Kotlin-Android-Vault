@@ -435,3 +435,27 @@ class A(){
 * Sealed class içinde `object` kullanımı ve enum classlar'daki enum sabitleri arka planda aynı şekilde oluşturulur. İkisi de static class olarak oluşturulur.
 * Sealed classlar'ın direct subclass'ların (bodysinde bulunan child classlar) primary constructor'ındaki parametre, sealed class'ın primary constructor'ındaki parametre ile aynı olmak zorunda değildir (enum classlar'ın aksine).
 * Enum class'lar miras alınamazlar dolayısı ile `open` veya `abstract` olamazlar. Ancak sealed class'larda bu kısıtlama yoktur.
+---------------------
+### [[Generics]]
+
+---------------------
+ 53. **Generic yapılarda invariance, co-variance ve contra-variance nedir?**
+	* Invariance değişmezlik demektir.  Invariance, bir süper sınıfın generic yapıda belirtilen alt sınıf yerine kullanılamayacağını ifade eder. 
+	* Co-variance Kotlin'de `out` anahtar kelimesi ile yapılır. Co-variance, generic yapıda bir sınıfı ve onun alt sınıflarını kabul eder.
+	* Contra-variance Kotlin'de `in` anahtar kelimesi ile yapılır. Contra-variance , generic yapıda bir sınıfı ve onun üst sınıflarını kabul eder. Örneğin:
+	     
+```kotlin
+interface Collection<E> {
+	fun addAll(items: Collection<E>) // Invariance, E ne ise onu kabul eder. Ne üst ne de alt sınıfını kabul etmeyecektir.
+}
+interface Collection2<out E> {
+	fun addAll(items: Collection<E>) // Co-variance, E sınıfı ve onun alt sınıflarını kabul eder.
+}
+interface Collection3<in E> {
+	fun addAll(items: Collection<E>) // Contra-variance, E sınıfı ve onun üst sınıflarını kabul eder.
+}
+``` 
+54. **Star projection nedir?**
+	    Kotlin'de generic yapılarda kullanılacak tipi tam olarak bilmesek bile daha güvenli bir şekilde tip belirtebilmek için star projection kullanılır. Generic tip belirtilecek yere `*` işareti konulur. Bu işaret okuma (read) veya return değeri için `<out Any?>` ve yazma (write) veya input için `<in Nothing>` şeklinde çevrilir. Dönülecek sınıf Kotlin'deki en üst sınıf olan`Any` sınıfının bir alt sınıfı olmalı ve girdi olarak verilecek sınıf Kotlin'deki en alt sınıf olan `Nothing` sınıfının bir üst sınıfı olması istenir. 
+ 55. **`reified` neden `inline` ile kullanılıyor?**
+	    
