@@ -9,7 +9,7 @@
 	Eğer uygulama çok-işparçacıklı (multi-threaded) bir uygulama değilse, var daha performanslıdır. Çünkü val'ın aksine var'da değer atanıp atanmadığını kontrol etme mekanizması yoktur. Ancak eğer uygulama çok-işparçacıklı (multi-threaded) bir uygulama ise, val daha performanslı olacaktır çünkü thread'ler de kendi aralarında değer sorgulama yapacakları için bu da bir performans kalemi olarak sayılacaktır.
 	
 2. **"Tip Çıkarımı" (Type inference) kavramını açıklayın. Hangi durumlarda tip belirtmek kesin olarak gereklidir?**
-   Tip çıkarımı, değişkenlerin veri tipine göre otomatik olarak belirlenmesidir. Örneğin biz `var name = "Ferec"` yazdığımızda, IDE otomatik olarak `name` değişkeninin tipini String olarak atar. Eğer değişkenimizi bir class içerisinde tanımlıyorsak, bir değer ataması yapmamız şarttır.Fakat eğer lokal olarak bir fonksiyonun içerisinde bir değişken tanımlıyorsak, değişkeninin tipini kesin olarak belirtmemiz gerekir.
+   Tip çıkarımı, değişkenlerin veri tipine göre otomatik olarak belirlenmesidir. Örneğin biz `var name = "Ferec"` yazdığımızda, IDE otomatik olarak `name` değişkeninin tipini String olarak atar. Eğer değişkenimizi bir class içerisinde tanımlıyorsak, bir değer ataması yapmamız şarttır.Fakat eğer lokal olarak bir fonksiyonun içerisinde bir değişken tanımlıyorsak, değişkeninin tipini belirttiğimiz takdirde başlangıç değeri vermemiz şart değildir.
    
 ```kotlin
 fun runForward() {
@@ -123,7 +123,7 @@ fun octalToDecimalUsingToInt(octal: String): Int {
 
 12. **Sayısal değişkenlerde örtük tip genişletme (implicit widening conversions) ne demektir? Kotlin'de bu neden yapılamaz?**
 	Sayısal değişkenlerde örtük tip genişletme, bir veri türünün daha küçük bir türden daha büyük bir türe dönüştürülmesidir. Bu dönüşüm, genellikle otomatik olarak gerçekleşir ve programcının belirli bir dönüşüm işlemi gerçekleştirmesine gerek kalmaz. Örneğin, bir `byte` türünün bir `int` türüne otomatik olarak genişletilmesi gibi.
-	Kotlin'de örtük tip genişletme yapılamaz çünkü Kotlin, Java'dan farklı olarak daha sıkı bir tür sistemi sunar. Bu sıkı tür sistemi, tür uyumsuzluklarını belirlemekte daha hassas olduğundan, otomatik genişletme işlemleri mümkün değildir. Bu nedenle, Kotlin'de sayısal değerler arasında tür dönüşümleri açıkça belirtilmelidir, yani örtük genişletme desteklenmez. Bu, tür uyumluluğunun daha net ve daha güvenli bir şekilde kontrol edilmesini sağlar ve tür hatalarını önler. Örneğin:
+	Kotlin'de örtük (implicit) tip genişletme yapılamaz çünkü Kotlin, Java'dan farklı olarak daha sıkı bir tür sistemi sunar. Bu sıkı tür sistemi, tür uyumsuzluklarını belirlemekte daha hassas olduğundan, otomatik genişletme işlemleri mümkün değildir. Bu nedenle, Kotlin'de sayısal değerler arasında tür dönüşümleri açıkça belirtilmelidir, yani örtük genişletme desteklenmez. Bu, tür uyumluluğunun daha net ve daha güvenli bir şekilde kontrol edilmesini sağlar ve tür hatalarını önler. Örneğin:
 	
 ```kotlin
 val randomByte: Byte = 7
@@ -440,7 +440,7 @@ class A(){
 
 ---------------------
  53. **Generic yapılarda invariance, co-variance ve contra-variance nedir?**
-	* Invariance değişmezlik demektir.  Invariance, bir süper sınıfın generic yapıda belirtilen alt sınıf yerine kullanılamayacağını ifade eder. 
+	* Invariance değişmezlik demektir.  Invariance, bir süper sınıfın generic yapıda belirtilen alt sınıf yerine kullanılamayacağını ifade eder. Bu yapıyı daha esnetmek istiyoruz ve bunun için de `in` ve `out` anahtar kelimelerini kullanıyoruz.
 	* Co-variance Kotlin'de `out` anahtar kelimesi ile yapılır. Co-variance, generic yapıda bir sınıfı ve onun alt sınıflarını kabul eder.
 	* Contra-variance Kotlin'de `in` anahtar kelimesi ile yapılır. Contra-variance , generic yapıda bir sınıfı ve onun üst sınıflarını kabul eder. Örneğin:
 	     
@@ -455,7 +455,33 @@ interface Collection3<in E> {
 	fun addAll(items: Collection<E>) // Contra-variance, E sınıfı ve onun üst sınıflarını kabul eder.
 }
 ``` 
-54. **Star projection nedir?**
+54. **Neden `Any` yerine generic kullanmalıyız?**
+	    `Any` kullandığımızda bir kısıtlamaya gidemeyiz. Örneğin sadece `Number`'dan miras alan sınıfları kullanabilmek gibi. Ayrıca derleme zamanında kontrol edilemeyeceği için hatalara daha açık bir yapı oluşacaktır. Ancak generic kullandığımızda hem kısıtlamaları doğru ayarlayabiliriz, hem de derleme zamanı hatalar daha açık şekilde gösterilir.
+55. **Star projection nedir?**
 	    Kotlin'de generic yapılarda kullanılacak tipi tam olarak bilmesek bile daha güvenli bir şekilde tip belirtebilmek için star projection kullanılır. Generic tip belirtilecek yere `*` işareti konulur. Bu işaret okuma (read) veya return değeri için `<out Any?>` ve yazma (write) veya input için `<in Nothing>` şeklinde çevrilir. Dönülecek sınıf Kotlin'deki en üst sınıf olan`Any` sınıfının bir alt sınıfı olmalı ve girdi olarak verilecek sınıf Kotlin'deki en alt sınıf olan `Nothing` sınıfının bir üst sınıfı olması istenir. 
- 55. **`reified` neden `inline` ile kullanılıyor?**
+ 56. **`reified` neden `inline` ile kullanılıyor?**
+	    Kotlin'de generic yapılar çalışma zamanında tipleri tutmuyorlar (type erasure). `inline` ile kodun çağrıldığı yer de fonksiyonun içine yapıştırıldığı için, `reified` anahtar kelimesi ile birlikte kullanıldığında bu sınıflara erişebiliyoruz.
+57. **`inline` anahtar kelimesi Kotlin'de sadece higher-order fonksiyonlar ile mi kullanılıyor? Değil ise başka nerede kullanılır?**
+	    `inline` anahtar kelimesi higher-order fonksiyonların dışında `reified` anahtar kelimesi kullanılan fonksiyonlarda da kullanılır.
 	    
+ 58. **Kotlin'de generic bir tipi non-nullable olarak belirlemek için nasıl bir yol izlenmelidir?**
+	    Kotlin'de generic bir tipi non-nullable yapabilmek için `& Any` yapısı kullanılır. Örneğin:
+```kotlin
+interface ArcadeGame<T1>: Game<T1> {
+	override fun save(x: T1): T1
+
+	// T1 non-nullable'dır.
+	override fun load(x: T1 & Any): T1 & Any
+}
+```    
+ 59. **Kotlin'de tür silmesi (type erasure) ne demektir?**
+		Kotlin'de generic yapılar için tip kontrolleri derleme zamanı (compile-time) yapılır. Compile-time zamanı bilinen tipler, çalışma zamanı (run-time) bilinmez. Kotlin'de tür silmesi, derleme sırasında generic tür bilgilerinin kaldırılmasıdır. Örneğin `Foo<Bar>` veya `Foo<Bar?>` yapıları `Foo<*>`'a çevrilir. Bu, çalışma zamanında tür bilgisinin eksik olmasına ve bazı durumlarda tür güvenliği ve dinamik tür kontrolüyle ilgili zorluklara neden olabilir. Bu nedenle, Kotlin'de `reified` tür parametreleri gibi çözümler kullanılarak bu sınırlamaların üstesinden gelinmeye çalışılır.
+60. **Aşağıdaki kodda B parametresinin sadece Number'ın alt sınıflarından birini alabilmesi için nasıl kısıtlarız?**
+```kotlin
+data class GPair<A, B>( val first: A, val second: B ) : Serializable
+```
+Üstteki kodda B tipini `out` kelimesi ile birlikte Number olarak kısıtlarsak, artık sadece Number'ın alt sınıflarını alacaktır.
+```kotlin
+data class GPair<A, out B: Number>( val first: A, val second: B ) : Serializable
+```
+61. **asd?**

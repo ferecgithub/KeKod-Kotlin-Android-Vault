@@ -1,3 +1,4 @@
+* Genericler, tipini bilmediğimiz ancak yine de bir hiyerarşi oluşturmak istediğimiz bir değişken verme yöntemidir. İlgili tür, arayüz (interface) dediğimiz `<>` karakterleri arasına belirtilir.
 * Genericler, sınıfları ve fonksiyonları daha genel ve yeniden kullanılabilir hale getirir. Bir sınıfı başka bir sınıftan miras almaktansa, generics kullanarak gereken davranışları ve özellikleri parametrize edebilirsiniz, bu da kodun daha az bağımlı ve daha kolayca değiştirilebilir olmasını sağlar.
 * Genericlere tip parametreleri (type parameters) de denir.
 * Java ve Kotlin'de Genericler değişmezdirler (**invariant**). Yani `List<String>` beklenen bir yere `List<Object>` veremeyiz. Yani subtype verip supertype kullanamayız. Eğer List'ler invariant olmasalardı, Java'daki array'lerden farkları kalmazdı.
@@ -30,7 +31,10 @@ interface Collection3<in E> {
 }
 ```
 * `Any` her sınıfın en üst sınıfıdır. `Nothing` ise her sınıfın en alt sınıfıdır. Dolayısı ile type projection yaptığımızda (`in` veya `out` kullanımında) eğer en alt sınıfı kastedip onun üst sınıflarının yazılabilmesini istersek `<in Nothing>` diyebiliriz. Eğer en üst sınıfı kastedip onun alt sınıflarının yazılabilmesini istersek  `<out Any>` diyebiliriz.
+#### Star projection
 * **Star projection** ile generic tip konusunda bilgimiz olmasa bile, güvenli bir şekilde generic tip atayabilmemizi sağlar. Bunun için generic tip belirlediğimiz yere `*` işareti koyarız. Okuma (read) için `<out Any?>` ve yazma (write) için `<in Nothing>` şeklinde çevrilir.
 * `Function <*, String>` yapısında ilk yapı girdi (input) ikinci yapı çıktıyı (output) ifade eder. Kotlin'de bu yapı şu şekilde çevrilir: `Function <in Nothing, String>`. Yani girdiye verilecek sınıf `Nothing`'in üst sınıfı olmalıdır ve her sınıf zaten `Nothing`'in üst sınıfıdır.
 * `Function <Int, *>` yapısı Kotlin'de bu yapı şu şekilde çevrilir: `Function <Int, out Any?>`. Yani döndürülecek sınıf `Any`'nin alt sınıfı olmalıdır ve her sınıf zaten `Any`'nin alt sınıfıdır.
 * `Function <*, *>` yapısı Kotlin'de bu yapı şu şekilde çevrilir: `Function <in Nothing, out Any?>`. 
+
+* S

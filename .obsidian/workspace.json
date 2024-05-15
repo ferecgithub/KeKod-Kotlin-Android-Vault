@@ -56,7 +56,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +85,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "expli",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -102,7 +102,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -122,7 +123,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Generics.md",
+                "file": "Kotlin Mülakat Soruları.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,7 +140,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Generics.md",
+                "file": "Kotlin Mülakat Soruları.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -162,7 +163,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Generics.md"
+                "file": "Kotlin Mülakat Soruları.md"
               }
             }
           }
@@ -183,11 +184,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "efce9dac4d013948",
+  "active": "d69a3092b3575d75",
   "lastOpenFiles": [
-    "Kotlin Mülakat Soruları.md",
-    "Generics.md",
     "Buradan Başla - Indeks.md",
+    "Generics.md",
+    "Kotlin Mülakat Soruları.md",
     "Temel Tipler - Notlar.md",
     "Nested & inner classlar.md",
     "Sınıflar - Notlar.md",
