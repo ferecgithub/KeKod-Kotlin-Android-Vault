@@ -11,3 +11,4 @@
 ### 5.6. [[Sealed classlar]]
 ### 5.7. [[Nested & inner classlar]]
 ### 6. [[Generics]]
+### 7. [[Objects]]

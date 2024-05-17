@@ -36,5 +36,3 @@ interface Collection3<in E> {
 * `Function <*, String>` yapısında ilk yapı girdi (input) ikinci yapı çıktıyı (output) ifade eder. Kotlin'de bu yapı şu şekilde çevrilir: `Function <in Nothing, String>`. Yani girdiye verilecek sınıf `Nothing`'in üst sınıfı olmalıdır ve her sınıf zaten `Nothing`'in üst sınıfıdır.
 * `Function <Int, *>` yapısı Kotlin'de bu yapı şu şekilde çevrilir: `Function <Int, out Any?>`. Yani döndürülecek sınıf `Any`'nin alt sınıfı olmalıdır ve her sınıf zaten `Any`'nin alt sınıfıdır.
 * `Function <*, *>` yapısı Kotlin'de bu yapı şu şekilde çevrilir: `Function <in Nothing, out Any?>`. 
-
-* S

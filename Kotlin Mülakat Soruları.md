@@ -484,4 +484,35 @@ data class GPair<A, B>( val first: A, val second: B ) : Serializable
 ```kotlin
 data class GPair<A, out B: Number>( val first: A, val second: B ) : Serializable
 ```
-61. **asd?**
+---------------------
+### [[Objects]]
+
+---------------------
+61. **Singleton bir anti-pattern olarak da adlandırılır. Neden?**
+	Gereğinden fazla singleton oluşturmak hafızanın gereksiz dolmasına sebep olacaktır. Ayrıca hız kazanmak için backend'e gitmeden client-side'da singleton tutup onu güncelliyorsak, senkronizasyonu iyi yaptığımızdan emin olmalıyız.
+62. **Kotlin'de Object'in kaç farklı kullanımı vardır?**
+	* Object Kotlin'de declaration, companion ve expression kullanımı olarak üç tipte kullanılabilir.
+	*  Object'i decleration kullanımı `object` anahtar kelimesi ile başka bir değişkene atamadan veya başka bir fonksiyona parametre olarak verilmeden yapılan kullanımdır. Örneğin:
+	```kotlin
+object Retrofit {
+	var baseUrl = "www.google.com"
+}
+	```
+	* Object'i expression kullandığımızda, onu bir değişkene atayabiliriz. Bunlara "kullan at" yapılar da denir. Bu yapı genelde interface ve abstract class'lar ile yapılır. Onların implement edilmesi gereken fonksiyonları block içinde implemente edilir. Burada aslında ilgili interface veya abstract class'ı miras alan isimsiz bir class oluşturmuş oluyoruz. Java'da buna anonymous class deniyor. Object kullanımında static bir yapı oluşmaz arka tarafta. Örneğin:
+	```kotlin
+fun demo() {
+	val textWatcher = object : TextWatcherClass() { // Gereksiz fonksiyonları override etmek yerine, kendi sınıfımıza/interface'imize override edip o sınıfı object olarak veriyoruz. Bu sayede daha temiz bir kod yazıyoruz.
+		override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+			println("$name, $age, $surname")
+		}
+	}
+}
+	```
+	* **Normalde Kotlin ve Java'da multiple inheritance desteklenmiyor. Ancak Object'in expression kullanımı sayesinde multiple inheritance yapabiliriz.**
+	* `companion object` kullanımında ise bir sınıfa eşlik eden bir static yapı oluşturmuş oluruz. Bu yapının lifecycle'ı `object`'in aksine sadece içinde tanımlandığı sınıf kadardır.
+63. **`object` ile `companion object` arasındaki farklar nelerdir?**
+	* `object` arka planda kendisi `static`değildir ancak bodysinde bulunan instance'ı `static`'tir. Dolayısı ile içindeki instance'a erişip, oradan içindeki öğelere erişiriz. 
+	* `companion object` bir sınıfın içinde bulunduğu için yani nested'lık özelliğinden dolayı `static`'tir ve kendi bloğu içinde kendi nesnesi bulunmaz. Kendi nesnesi bağlı olduğu sınıfın içinde yine `static final` olarak bulunur.
+	* Bir `companion object` ile sınıfımıza eşlik eden bir singleton oluşturmuş oluruz. `companion object`'in lifecycle'ı içinde bulunduğu sınıf kadardır. Bir `object` ile genel bir singleton oluştururuz ve bu singleton'u tüm sınıflarda kullanabiliriz. `object`'in lifecycle'ını biz yönetiriz.
+64. **Bir `companion object` içindeki `static` olmayan bir fonksiyona nasıl içinde bulunduğu sınıfın nesnesini oluşturmadan (constructor olmadan) erişebiliyoruz?**
+	Arka planda `static` bir `Companion` objesi oluşturulur. Bu yüzden fonksiyonun body'sine static bir fonksiyon yazmasak bile bu obje üzerinden erişebiliriz. Yani biz `HomeFragment.newInstance()` yazsak da, aslında IDE arka planda bunu şöyle görür: `HomeFragment.Companion.newInstance()`. Ancak eğer projede Java sınıfları da varsa, bu durumda `Companion`'ı da yazmalıyız o fonksiyonu çağırırken.
