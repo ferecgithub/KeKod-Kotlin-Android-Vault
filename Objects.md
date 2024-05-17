@@ -60,6 +60,7 @@ fun demo() {
 }
 	```
 	* **Normalde Kotlin ve Java'da multiple inheritance desteklenmiyor. Ancak Object'in expression kullanımı sayesinde multiple inheritance yapabiliriz.**
+	* `companion object` kullanımında ise bir sınıfa eşlik eden bir static yapı oluşturmuş oluruz. Bu yapının lifecycle'ı `object`'in aksine sadece içinde tanımlandığı sınıf kadardır.
 
 * `data object` veya `data class` arasındaki fark, `data object`'te arka planda class yerine singleton yapısı, equal() ve hashCode() fonksiyonları var, toString(), componentN fonksiyonları ve copy() fonksiyonu yok. Yani `data object` singleton formunda (static) olan ve yarı data yapısında bulunan bir sınıftır. Sade `object` ise singleton formunda (static) bir classtır.
 

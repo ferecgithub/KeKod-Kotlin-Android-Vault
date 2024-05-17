@@ -516,3 +516,10 @@ fun demo() {
 	* Bir `companion object` ile sınıfımıza eşlik eden bir singleton oluşturmuş oluruz. `companion object`'in lifecycle'ı içinde bulunduğu sınıf kadardır. Bir `object` ile genel bir singleton oluştururuz ve bu singleton'u tüm sınıflarda kullanabiliriz. `object`'in lifecycle'ını biz yönetiriz.
 64. **Bir `companion object` içindeki `static` olmayan bir fonksiyona nasıl içinde bulunduğu sınıfın nesnesini oluşturmadan (constructor olmadan) erişebiliyoruz?**
 	Arka planda `static` bir `Companion` objesi oluşturulur. Bu yüzden fonksiyonun body'sine static bir fonksiyon yazmasak bile bu obje üzerinden erişebiliriz. Yani biz `HomeFragment.newInstance()` yazsak da, aslında IDE arka planda bunu şöyle görür: `HomeFragment.Companion.newInstance()`. Ancak eğer projede Java sınıfları da varsa, bu durumda `Companion`'ı da yazmalıyız o fonksiyonu çağırırken.
+
+---------------------
+### [[Reflection]]
+
+---------------------
+65. **Reflection nedir?**
+	Üyeleri veya constructor'ı `private` olan bir sınıfın `private` üyelerine erişebilmek için kullanabileceğimiz bir yöntemdir reflection.
