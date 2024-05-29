@@ -13,3 +13,4 @@
 ### 6. [[Generics]]
 ### 7. [[Objects]]
 ### 8.[[Reflection]]
+### 9.[[Scope Functions]]

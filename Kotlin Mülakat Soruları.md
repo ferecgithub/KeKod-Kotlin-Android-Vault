@@ -291,12 +291,11 @@ returnLabel@ for (value in 1..50) {
 
 33. **Bir fonksiyonun `infix` fonksiyon olabilmesi için hangi şartları sağlamalıdır?**
      `infix` fonksiyonlar daha okunaklı bir kod yazmak amacıyla kullanılır ve . (nokta) kullanımını kaldırır.
-     Bir fonksiyonu `infix` hâle getirmek için 5 şart vardır:
+     Bir fonksiyonu `infix` hâle getirmek için 4 şart vardır:
      1. `infix` anahtar kelimesi ile başlar.
-     2. Fonksiyon bir üye fonksiyon yani bir sınıfa ait fonksiyon olmalıdır.
-     3. Ya da bir extension fonksiyon olmalıdır.
-     4. Sadece bir parametre almalıdır ve bu parametre `vararg` olamaz.
-     5. `infix` fonksiyon parametresi varsayılan değer alamaz.
+     2. Fonksiyon bir üye fonksiyon yani bir sınıfa ait fonksiyon olmalıdır ya da bir extension fonksiyon olmalıdır.
+     3. Sadece bir parametre almalıdır ve bu parametre `vararg` olamaz.
+     4. `infix` fonksiyon parametresi varsayılan değer alamaz.
         
      Örneğin:
         
@@ -305,13 +304,13 @@ infix fun infixMethod(justOneParam: AwesomeParam): Whatever {}
 ```
 
 34. **Extension fonksiyonları açıkla.**
-     Extension fonksiyonlar salt okunur (read-only) bir sınıfı veya üzerinde direkt olarak ekleme yapmak istemediğimiz bir sınıfın üzerine bir fonksiyonu eklemiş gibi göstermemizi sağlar. Ancak arka planda o sınıfa bir ekleme yapmaz. Extension fonksiyonlar aslında çok yeni birşey değil. Java tarafında static utility fonksiyonu yazıp, o sınıfı ve diğer değerleri parametre olarak fonksiyona verip yazabiliyorduk. Ancak extension fonksiyonlar bu işlemi fonksiyonel programlamaya daha uygun bir yazımla yapmamızı sağladı. **Extension fonksiyonlar ancak bir `top level fonksiyon` ise genişletilen sınıflarda görünür hâle gelir. Eğer bir sınıf içinde ise gelmez.** Dolayısı ile extension fonksiyonlar üye bir fonksiyon (method) gibi durak ancak gerçekte üye fonksiyon olmayan fonksiyonlardır.
+     Extension fonksiyonlar salt okunur (read-only) bir sınıfı veya üzerinde direkt olarak ekleme yapmak istemediğimiz bir sınıfın üzerine bir fonksiyonu eklemiş gibi göstermemizi sağlar. Ancak arka planda o sınıfa bir ekleme yapmaz. Extension fonksiyonlar aslında çok yeni birşey değil. Java tarafında static utility fonksiyonu yazıp, o sınıfı ve diğer değerleri parametre olarak fonksiyona verip yazabiliyorduk. Ancak extension fonksiyonlar bu işlemi fonksiyonel programlamaya daha uygun bir yazımla yapmamızı sağladı. **Extension fonksiyonlar ancak bir `top level fonksiyon` ise genişletilen sınıflarda görünür hâle gelir. Eğer bir sınıf içinde ise gelmez.** Dolayısı ile extension fonksiyonlar üye bir fonksiyon (method) gibi durur ancak gerçekte üye fonksiyon olmayan fonksiyonlardır.
 
 35. **Extension fonksiyonlar arka planda nasıl çalışırlar?**
      Extension fonksiyonlar Java tarafında static utility fonksiyonlarına karşılık gelir. Basitçe hem extension yazığımız değerin kendisini (bunu `this` ile görürüz) hem de extension fonksiyonun parametresindeki değeri parametre olarak alır ve üzerlerinde işlem yapar.
 
 35. **Extension fonksiyonlar ile bir fonksiyonu genişletebiliriz. Biz ayrıca değişkenleri de genişletebiliyoruz. Bunu nasıl yaparız?**
-     Kotlin'de değişkenler aslında Java'da property olarak tanımlanırlar. Yani değişkenler Java'da değişken her zaman `private`'tır ve sadece get ve set methodları dışarıya açıktır. Backing field dediğimiz değişkenin kendisi açık değildir. Dolayısı ile get ve set kullanarak bir değişkeni de bir sınıftan extend edebiliriz. Ancak extension property'lerin içinde `field` tanımlanamaz (backing fieldları yoktur). Dolayısı ile gerçek anlamda bir değişken extension edilemez. Arka planda değişken genişletme aslında fonksiyon genişletme ile aynı şekilde çalışır. Örneğin:
+     Kotlin'de değişkenler aslında Java'da property olarak tanımlanırlar. Yani değişkenler arka planda her zaman `private`'tır ve sadece get ve set methodları dışarıya açıktır. Backing field dediğimiz değişkenin kendisi açık değildir. Dolayısı ile get ve set kullanarak bir değişkeni de bir sınıftan extend edebiliriz. Ancak extension property'lerin içinde `field` tanımlanamaz (backing fieldları yoktur). Dolayısı ile gerçek anlamda bir değişken extension edilemez. Arka planda değişken genişletme aslında fonksiyon genişletme ile aynı şekilde çalışır. Örneğin:
      
 ```kotlin
 var Shape.type
@@ -523,3 +522,20 @@ fun demo() {
 ---------------------
 65. **Reflection nedir?**
 	Üyeleri veya constructor'ı `private` olan bir sınıfın `private` üyelerine erişebilmek için kullanabileceğimiz bir yöntemdir reflection.
+	
+---------------------
+### [[Scope Functions]]
+
+---------------------
+66. **Aşağıdaki kod nasıl yanlış çalışır? Düzeltmek için ne yapılabilir?**
+```kotlin
+fun someUserFun(user: User?) {
+	val foo = user?.let {
+		5
+		null
+	} ?: run {
+		4
+	}
+}
+```
+`let` scope fonksiyonu lambdanın son satırını değer olarak döndüreceği için elvis (`?:`) operatörü sayesinde `run` bloğu çalıştırılacaktır. Eğer burada amacımız user nesnesinin null kontrolü üzerinde blokları çalıştırmak ise `let` yerine `also` kullanabiliriz. Bu sayede lambdanın son değeri null bile olsa geri dönüş değeri nesnenin kendisi olacaktır.

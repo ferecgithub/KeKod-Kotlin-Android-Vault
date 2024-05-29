@@ -1,4 +1,4 @@
-* Sınıf hiyerarşisini geliştiricinin keyfinden alıp, IDE'nin eline verdiğimiz kısıtlanmış hiyerarşi oluşturabileceğimiz sınıflardır.  Child classlar derleme aşamasında belli olur. Başka bir geliştiricinin bizim yaptığımız `sealed class`'ı miras alarak yeni türler oluşturmasını önledik.
+* Sınıf hiyerarşisini geliştiricinin keyfinden alıp, IDE'nin eline verdiğimiz kısıtlanmış hiyerarşi oluşturabileceğimiz sınıflardır.  Child classlar derleme aşamasında belli olur. `sealed class`'lar miras verilemeyeceği için başka bir geliştiricinin bizim yaptığımız `sealed class`'ı miras alarak yeni türler oluşturmasını önlemiş oluruz.
 * Boş bir sealed class oluşturursak, herhangi bir sınıfa miras olarak verebiliriz. Bu durumda kapalı kutu durumu ortadan kalkar.
 * Visibility modifier'lar kullanılabilir.
 * `open` veya `final` yapılamazlar.

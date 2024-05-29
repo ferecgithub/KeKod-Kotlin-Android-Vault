@@ -20,7 +20,19 @@
             }
           },
           {
-            "id": "945d8e85b25653a8",
+            "id": "36e63c3c883bef34",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Scope Functions.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "33ea1bbb0294b88e",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -32,31 +44,7 @@
             }
           },
           {
-            "id": "d69a3092b3575d75",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Kotlin Mülakat Soruları.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "9e05fc447476931e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Temel Tipler - Notlar.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "8cb2a056e9f96e56",
+            "id": "937fdb5f2a770a99",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -68,31 +56,19 @@
             }
           },
           {
-            "id": "bab987a5d2e17621",
+            "id": "e2e12108e4fe70b4",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Reflection.md",
+                "file": "Fonksiyonlar - Notlar.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "45d1102831cb5f44",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Objects.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "1bef86c1235cecc7",
+            "id": "cf74da2fa4577927",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -102,9 +78,93 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "bb050fa3278e0cb0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Buradan Başla - Indeks.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "6ffd77539cf32b67",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Buradan Başla - Indeks.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "c99761d30b4f360a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Kotlin Mülakat Soruları.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "08440e1ef39e9d20",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Buradan Başla - Indeks.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "78e03093c7972b2e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Nested & inner classlar.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "02555c07719d2249",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Kotlin Mülakat Soruları.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "8c8614fe0be3216e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Sealed classlar.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 5
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -133,7 +193,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "infix",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -150,7 +210,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -170,7 +231,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Reflection.md",
+                "file": "Scope Functions.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -187,7 +248,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Reflection.md",
+                "file": "Scope Functions.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -210,7 +271,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Reflection.md"
+                "file": "Scope Functions.md"
               }
             }
           }
@@ -231,25 +292,28 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "bab987a5d2e17621",
+  "active": "36e63c3c883bef34",
   "lastOpenFiles": [
-    "Buradan Başla - Indeks.md",
-    "Temel Tipler - Notlar.md",
     "Kotlin Mülakat Soruları.md",
-    "Reflection.md",
+    "Scope Functions.md",
+    "Screenshot 2024-05-28 at 10.37.50.png",
+    "Sealed classlar.md",
+    "Buradan Başla - Indeks.md",
+    "Nested & inner classlar.md",
+    "Fonksiyonlar - Notlar.md",
+    "Temel Tipler - Notlar.md",
+    "kotlin_scope_functions.gif",
+    "Data classlar.md",
+    "Sınıflar - Notlar.md",
     "Objects.md",
     "Generics.md",
-    "Nested & inner classlar.md",
-    "Sınıflar - Notlar.md",
-    "Fonksiyonlar - Notlar.md",
+    "Reflection.md",
+    "Enum classlar.md",
     "Kotlin'de obje yönelimli programlama (object oriented programming).md",
+    "Interfaceler.md",
+    "Soyut Sınıflar (Abstract Classes).md",
     "Screenshot 2024-04-19 at 15.16.28.png",
     "inline_modifiers.png",
-    "Data classlar.md",
-    "Enum classlar.md",
-    "Sealed classlar.md",
-    "Soyut Sınıflar (Abstract Classes).md",
-    "Interfaceler.md",
     "Control Flows - Notlar.md",
     "Döngüler - Notlar.md",
     "ReadMe.md",

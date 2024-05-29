@@ -7,7 +7,7 @@ val numbersValue: String = "value" + (4 + 2 + 8) // value14
 val numbersValue2: String = (4 + 2 + 8) + "value" // çalışmaz. Değer Int olarak belirlenir burada + operatörü çalışmaz.
 ```
 
-* Primitive array ve object-type array olarak 2 tip array'den söz edebiliriz. Primitive arrayler ByteArray(byte[]), ShortArray(short[]), IntArray(int[]), LongArray(long[]), DoubleArray(double[]), FloatArray(float[]), BooleanArray(boolean[]), CharArray(char[]) şeklindedir (String'in primitive array yapısı yoktur). Object-type arrayler ise Array sınıfından miras aldığımız arraylerdir. İkisi arasında performans farkı vardır.  Primitive tipli arraylerde değerin adı ve değerin kendisi Stack'te tutuluyor. Boxed tipli referans değerlerde ise değerin adı/adresi Stack'te, değer ise Heap'te tutuluyordu. Dolayısı ise primitive tipler daha hızlı çalışırlar.
+* Primitive array ve object-type array olarak 2 tip array'den söz edebiliriz. Primitive arrayler ByteArray(byte[]), ShortArray(short[]), IntArray(int[]), LongArray(long[]), DoubleArray(double[]), FloatArray(float[]), BooleanArray(boolean[]), CharArray(char[]) şeklindedir (String'in primitive array yapısı yoktur). Object-type arrayler ise Array sınıfından miras aldığımız arraylerdir. İkisi arasında performans farkı vardır.  Primitive tipli arraylerde değerin adı ve değerin kendisi Stack'te tutuluyor. Boxed tipli referans değerlerde ise değerin adı Stack'te, değer ise Heap'te tutuluyordu. Dolayısı ise primitive tipler daha hızlı çalışırlar.
 * Arraylerde eğer elemanlar üzerinde işlem yapmamız gerekliyse contructor'lı versiyonunu kullanırız. Eğer işlem yapmamız gerekmiyorsa fonksiyon olarak kullanabiliriz. Örneğin:
 
 ```kotlin
