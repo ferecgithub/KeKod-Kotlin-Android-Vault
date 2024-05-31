@@ -146,3 +146,4 @@ fun someUserFun(user: User?) {
 5. `run`'ın extension olmayan halini ise kodu gruplara ayırmak ancak fonksiyonlara ayırmak istemediğimiz zaman kullanabiliriz.
 
 ![[kotlin_scope_functions.gif]]
+Resim kaynağı: https://www.linkedin.com/feed/update/urn:li:activity:7200835881341972480/

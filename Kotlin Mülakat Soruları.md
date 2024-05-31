@@ -539,3 +539,15 @@ fun someUserFun(user: User?) {
 }
 ```
 `let` scope fonksiyonu lambdanın son satırını değer olarak döndüreceği için elvis (`?:`) operatörü sayesinde `run` bloğu çalıştırılacaktır. Eğer burada amacımız user nesnesinin null kontrolü üzerinde blokları çalıştırmak ise `let` yerine `also` kullanabiliriz. Bu sayede lambdanın son değeri null bile olsa geri dönüş değeri nesnenin kendisi olacaktır.
+
+---------------------
+### [[Delegation]]
+
+---------------------
+67. **`by lazy` ile `lateinit var`'ın farkları nelerdir?**
+- `by lazy` ile tanımlanan değişkenler nullable yapılabilir. Bu nedenle kullanmadan önce null olup olmadığına bakmamız gerekebilir. `lateinit` ile tanımlanan değişkenler null olamaz (non-nullable). Bu, güvenli bir şekilde kullanılabileceklerini garanti eder.
+- `by lazy` thread safe iken `lateinit var` thread safe değildir. Thread safety için çeşitli modlar vardır. NONE dışındaki SYNCHRONIZED ve PUBLICATION thread safety sağlar.
+-  `by lazy`'nin aldığı değer sonradan değiştirilemiyor ancak `lateinit`'in değeri sonradan değiştirilebilir. 
+- `lateinit`, `by lazy`'e göre daha risklidir. Çünkü `by lazy`'de ilk değerin ne olacağı bellidir ancak `lateinit`'te değeri biz atamalıyız. Bunu KProperty içindeki `isInitialized()` fonksiyonu ile kontrol edebiliriz.
+68. **`by lazy` neden sadece `val` ile kullanılıyor?**
+Çünkü `Lazy<T>` interface'indeki `public val value: T` değerinin set `operatörü` yoktur. Bu yüzden `var` kullanmaya izin vermez.

@@ -14,3 +14,5 @@
 ### 7. [[Objects]]
 ### 8.[[Reflection]]
 ### 9.[[Scope Functions]]
+### 10.[[Delegation]]
+### 11.[[Observer Pattern]]
