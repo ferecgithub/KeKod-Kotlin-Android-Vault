@@ -1,3 +1,4 @@
+## Kotlin Notları
 ### 1. [[Temel Tipler - Notlar]]
 ### 2. [[Control Flows - Notlar]]
 ### 3. [[Döngüler - Notlar]]
@@ -16,3 +17,8 @@
 ### 9.[[Scope Functions]]
 ### 10.[[Delegation]]
 ### 11.[[Observer Pattern]]
+
+## Android Notları
+
+### 1. [[Android Temeller]]
+### 2. [[Activities]]

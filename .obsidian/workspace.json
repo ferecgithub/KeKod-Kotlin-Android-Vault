@@ -20,6 +20,42 @@
             }
           },
           {
+            "id": "9fc2c07b5ac69a3e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Android Temeller.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "5dd98b8c3230b6a8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Activities.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "0827b1acb47bf670",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Sealed classlar.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
             "id": "acb6abd49c7bd37d",
             "type": "leaf",
             "state": {
@@ -200,7 +236,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -267,7 +303,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Kotlin Mülakat Soruları.md",
+                "file": "Sealed classlar.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -284,7 +320,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Kotlin Mülakat Soruları.md",
+                "file": "Sealed classlar.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -307,7 +343,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Kotlin Mülakat Soruları.md"
+                "file": "Sealed classlar.md"
               }
             }
           }
@@ -328,16 +364,18 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "33ea1bbb0294b88e",
+  "active": "0827b1acb47bf670",
   "lastOpenFiles": [
-    "Delegation.md",
-    "Kotlin Mülakat Soruları.md",
-    "Observer Pattern.md",
+    "Android Temeller.md",
     "Buradan Başla - Indeks.md",
+    "Activities.md",
+    "Sealed classlar.md",
+    "Kotlin Mülakat Soruları.md",
+    "Delegation.md",
+    "Observer Pattern.md",
     "Scope Functions.md",
     "Fonksiyonlar - Notlar.md",
     "Screenshot 2024-05-28 at 10.37.50.png",
-    "Sealed classlar.md",
     "Nested & inner classlar.md",
     "Temel Tipler - Notlar.md",
     "kotlin_scope_functions.gif",

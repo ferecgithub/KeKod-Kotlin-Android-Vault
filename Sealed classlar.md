@@ -3,7 +3,7 @@
 * Visibility modifier'lar kullanılabilir.
 * `open` veya `final` yapılamazlar.
 * Sealed classlar diğer sınıfları miras alabilir.
-* Primary constructoru varsayılan `protected`'dır. Sadece sınıf scope'u içinde bir hiyerarşi kurulursa constructor `private` yapılabilir ancak `protected`olması, dışarıda da bu sealed class'ı miras alan bir sınıf olabilmesini sağlar. Kütüphanelerde constructor `private`yapılır ki kütüphanedeki sealed class içinde belirlenen türlerden başka türler türetilemesin.
+* Primary constructor varsayılan olarak `public`'tır. Sadece sınıfın kendisi içinde ve aynı dosya içinde bir hiyerarşi kurulursa constructor `private` yapılabilir. Ancak `protected` olması, aynı dosya dışındaki sınıfların bu `sealed class`ı miras almasına izin vermez. Kütüphanelerde constructor `private` yapılır ki, kütüphanedeki `sealed class` içinde belirlenen türlerden başka türler türetilemesin.
 * Enum class'lardaki enum sabitlerinin arka planda bulunduğu gibi, sealed class'ın child classları da **static final class** olarak bulunurlar.
 * Enum class'ların sabitleri hafızada sadece bir tane bulunur (nesnesi oluşturulamaz). Ancak sealed class'ların childları birden fazla nesnesi oluşturabilir.
 * Sealed class içinde `object` kullanımı ve enum classlar'daki enum sabitleri arka planda aynı şekilde oluşturulur. İkisi de static class olarak oluşturulur.
